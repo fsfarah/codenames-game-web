@@ -1,0 +1,94 @@
+body, html { font-family: 
+	-apple-system,  'avenir next', avenir, roboto, noto, ubuntu, 
+'helvetica neue', helvetica, arial, sans-serif; 
+}
+
+#seed{
+	width: 150px;
+}
+
+#main-table td{
+	border:0px;
+	width: 20%;
+	vertical-align: middle;
+}
+
+#main-table.table{
+	border:0px;
+}
+
+.card {
+	cursor: pointer;
+	text-align: center;
+	font-size:16px;
+	font-weight:bold;
+	padding: 30px 0px 30px 0px;
+	margin-bottom: 0px;
+	border: 1px solid #ddd;
+	color: #111;
+	border-radius: 4px;
+}
+
+.card:hover{
+	text-decoration: underline;
+}
+
+.card-done{
+	cursor: default;
+}
+
+.card-done:hover{
+	text-decoration: none;
+}
+
+.red {
+	color:#800600;
+	background-color: #FF4136
+}
+
+.yellow{
+	color: #665800;
+	background-color: #FFDC00
+}
+
+.black{
+	color: #ddd;
+	background-color: #111
+}
+
+.blue{
+	color: #b3dbff;
+	background-color: #0074D9;
+}
+
+.grey{
+	color: #AAAAAA;
+	background-color: #ddd;
+}
+
+.grey:hover{
+	text-decoration: none;
+}
+
+.text-red{
+	color: #FF4136;
+}
+
+.text-blue{
+	color: #0074D9;
+}
+
+.text-black{
+	color:#111;
+	text-decoration: underline;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.text-black:hover{
+	color: #111;
+}
+
+#new-game-opts{
+	display: inline;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Codenames</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div class="container-fluid">
+      <br/>
+      <div class="row" style="padding-left:15px">
+        <div class="col-md-1">
+          <h4 class="text-blue">Blue</h4>
+        </div>
+          <div class="col-md-1">
+          <h4 class="text-blue">
+            <span id="blue-score"></span>/<span id="blue-total"></span>
+          </h4>
+        </div>
+        <div class="col-md-1">
+           <h4 class="text-red">Red</h4>
+        </div>
+        <div class="col-md-1">
+          <h4 class="text-red">
+            <span id="red-score"></span>/<span id="red-total"></span>
+          </h4>
+        </div>
+        <div class="col-md-2 pull-right">
+          <h4>00:01:30</h4>
+        </div>
+      </div>
+      <br/>
+			<div class="row">
+				<div class="col-md-12">
+					<table id="main-table" class="table table-bordered">
+					</table>
+				</div>
+			</div>
+      <br/>
+      <div class="row">
+        <div class="col-md-12"> 
+          <form id="form-gen" class="form-inline">
+            <div class="form-group">
+              <button type="button" id="btn-generate" class="btn btn-default" >New Game</button>
+            </div>
+            <div id="new-game-opts">
+              <div class="form-group">
+                <input id="seed" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="radio-inline">
+                  <input checked="checked" type="radio" name="role" value="spymaster"> Spymaster
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="role" value="player"> Player
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+		</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/seedrandom.min.js"></script>
+    <script src="js/words.js"></script>
+    <script src="js/codenames.js"></script>
+  </body>
+</html>
