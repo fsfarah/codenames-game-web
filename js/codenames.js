@@ -1,6 +1,7 @@
 // NOTE: var words contains words array, loaded in index.html
 
 $(document).ready(function() {
+  $('#scores-row').hide();
   $('#form-gen').on('submit', function(e) {
     e.preventDefault();
     $('#btn-generate').trigger('click');
@@ -65,7 +66,6 @@ function renderBoard(cards, role, isBlueStartFirst) {
       $(this)
       .addClass($(this).data('color'))
       .addClass('card-done');
-
       var color = $(this).data('color');
       incrementScore(color);
       switchTurns(color);
@@ -86,6 +86,9 @@ function renderBoard(cards, role, isBlueStartFirst) {
   var startingColor = isBlueStartFirst ? 'blue' : 'red';
   $table.data('turn', startingColor);
   setTurn(startingColor);
+  // show row
+  $('#scores-row').show();
+  $('#new-game-form').hide();
 }
 
 function incrementScore(color) {
@@ -101,7 +104,7 @@ function incrementScore(color) {
 function switchTurns(color) {
   var $table = $('#main-table');
   var currentTurn = $table.data('turn');
-  if (currentTurn != color && color != 'black') {
+  if (currentTurn != color) {
     // switch turns when card is different
     var color = currentTurn == 'blue' ? 'red' : 'blue';
     $table.data('turn', color);

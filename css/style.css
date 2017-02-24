@@ -97,3 +97,12 @@ body, html { font-family:
 	font-size:16px;
 	font-weight: bold;
 }
+
+#scores-row {
+	margin-top: 10px;
+	padding-left:15px;
+}
+
+#game-result{
+	font-size: 16px;
+}
