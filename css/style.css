@@ -92,3 +92,8 @@ body, html { font-family:
 #new-game-opts{
 	display: inline;
 }
+
+.text-score{
+	font-size:16px;
+	font-weight: bold;
+}

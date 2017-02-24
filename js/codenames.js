@@ -23,6 +23,7 @@ function createGame() {
 }
 
 function renderBoard(cards, role, isBlueStartFirst) {
+  // main rendering
   var $table = $('#main-table');
   $table.empty();
   for (var i = 0; i < 5; i++) {
@@ -44,6 +45,7 @@ function renderBoard(cards, role, isBlueStartFirst) {
     $table.append($row);
   }
 
+  // card click events
   if (role == 'spymaster') {
     $table
     .off('click', '.card')
@@ -51,7 +53,10 @@ function renderBoard(cards, role, isBlueStartFirst) {
       $(this)
       .addClass('grey')
       .addClass('card-done');
-      incrementScore($(this).data('color'));
+
+      var color = $(this).data('color');
+      incrementScore(color);
+      switchTurns(color);
     });
   }else if (role == 'player') {
     $table
@@ -60,11 +65,14 @@ function renderBoard(cards, role, isBlueStartFirst) {
       $(this)
       .addClass($(this).data('color'))
       .addClass('card-done');
-      incrementScore($(this).data('color'));
+
+      var color = $(this).data('color');
+      incrementScore(color);
+      switchTurns(color);
     });
   }
 
-  // set score values
+  // set initial score values
   $('#red-score,#blue-score').text(0);
   if (isBlueStartFirst) {
     $('#blue-total').text(9);
@@ -73,6 +81,11 @@ function renderBoard(cards, role, isBlueStartFirst) {
     $('#red-total').text(9);
     $('#blue-total').text(8);
   }
+
+  // set turn initial value
+  var startingColor = isBlueStartFirst ? 'blue' : 'red';
+  $table.data('turn', startingColor);
+  setTurn(startingColor);
 }
 
 function incrementScore(color) {
@@ -82,6 +95,27 @@ function incrementScore(color) {
   }else if (color == 'blue') {
     var score = $('#blue-score').text();
     $('#blue-score').text(++score);
+  }
+}
+
+function switchTurns(color) {
+  var $table = $('#main-table');
+  var currentTurn = $table.data('turn');
+  if (currentTurn != color && color != 'black') {
+    // switch turns when card is different
+    var color = currentTurn == 'blue' ? 'red' : 'blue';
+    $table.data('turn', color);
+    setTurn(color);
+  }
+}
+
+function setTurn(color) {
+  if (color == 'blue') {
+    $('#blue-team').css('border-bottom', '3px solid');
+    $('#red-team').css('border-bottom', '0px');
+  }else if (color == 'red') {
+    $('#blue-team').css('border-bottom', '0px');
+    $('#red-team').css('border-bottom', '3px solid');
   }
 }
 
