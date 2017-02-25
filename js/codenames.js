@@ -57,7 +57,6 @@ function renderBoard(cards, role, isBlueStartFirst) {
 
       var color = $(this).data('color');
       incrementScore(color);
-      switchTurns(color);
     });
   }else if (role == 'player') {
     $table
@@ -68,7 +67,6 @@ function renderBoard(cards, role, isBlueStartFirst) {
       .addClass('card-done');
       var color = $(this).data('color');
       incrementScore(color);
-      switchTurns(color);
     });
   }
 
@@ -84,11 +82,8 @@ function renderBoard(cards, role, isBlueStartFirst) {
 
   // set turn initial value
   var startingColor = isBlueStartFirst ? 'blue' : 'red';
-  $table.data('turn', startingColor);
-  setTurn(startingColor);
   // show row
   $('#scores-row').show();
-  $('#new-game-form').hide();
 }
 
 function incrementScore(color) {
@@ -98,27 +93,6 @@ function incrementScore(color) {
   }else if (color == 'blue') {
     var score = $('#blue-score').text();
     $('#blue-score').text(++score);
-  }
-}
-
-function switchTurns(color) {
-  var $table = $('#main-table');
-  var currentTurn = $table.data('turn');
-  if (currentTurn != color) {
-    // switch turns when card is different
-    var color = currentTurn == 'blue' ? 'red' : 'blue';
-    $table.data('turn', color);
-    setTurn(color);
-  }
-}
-
-function setTurn(color) {
-  if (color == 'blue') {
-    $('#blue-team').css('border-bottom', '3px solid');
-    $('#red-team').css('border-bottom', '0px');
-  }else if (color == 'red') {
-    $('#blue-team').css('border-bottom', '0px');
-    $('#red-team').css('border-bottom', '3px solid');
   }
 }
 
