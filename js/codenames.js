@@ -12,7 +12,7 @@ $(document).ready(function() {
     // apply seed
     Math.seedrandom(seed);
     createGame();
-    $(document).attr('title', $(document).attr('title') + ' | ' + seed);
+    $(document).attr('title', 'Codenames' + ' | ' + seed);
   });
 });
 
