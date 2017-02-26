@@ -26,7 +26,10 @@ function createGame() {
 function renderBoard(cards, role, isBlueStartFirst) {
   // main rendering
   var $table = $('#main-table');
-  $table.empty();
+  $table
+  .empty()
+  .off('click', '.click-once');
+
   for (var i = 0; i < 5; i++) {
     var $row = $('<tr></tr>');
     for (var j = 0; j < 5; j++) {
@@ -34,7 +37,7 @@ function renderBoard(cards, role, isBlueStartFirst) {
       var $card = $('<p></p>');
       // take next card and render
       var currentCard = cards.shift();
-      $card.addClass('card');
+      $card.addClass('card').addClass('click-once');
       $card.attr('data-color', currentCard.color);
       if (role == 'spymaster') {
         $card.addClass(currentCard.color);
@@ -49,22 +52,23 @@ function renderBoard(cards, role, isBlueStartFirst) {
   // card click events
   if (role == 'spymaster') {
     $table
-    .off('click', '.card')
-    .on('click', '.card', function() {
+    .on('click', '.click-once', function(e) {
       $(this)
       .addClass('grey')
-      .addClass('card-done');
-
+      .addClass('card-done')
+      .removeClass('click-once');
       var color = $(this).data('color');
       incrementScore(color);
     });
   }else if (role == 'player') {
     $table
-    .off('click', '.card')
-    .on('click', '.card', function() {
+    .on('click', '.click-once', function() {
       $(this)
-      .addClass($(this).data('color'))
-      .addClass('card-done');
+      .addClass($(this)
+      .data('color'))
+      .addClass('card-done')
+      .removeClass('click-once');
+
       var color = $(this).data('color');
       incrementScore(color);
     });
