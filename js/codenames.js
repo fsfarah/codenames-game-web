@@ -101,20 +101,21 @@ function incrementScore(color) {
 }
 
 function pickRandomCards(isBlueStartFirst) {
+  var wordsPool = words.slice(0);
   var cards = [];
   // blue
-  cards = cards.concat(createCards(8, 'blue'));
+  cards = cards.concat(createCards(8, 'blue', wordsPool));
   // red
-  cards = cards.concat(createCards(8, 'red'));
+  cards = cards.concat(createCards(8, 'red', wordsPool));
   // yellow
-  cards = cards.concat(createCards(7, 'yellow'));
+  cards = cards.concat(createCards(7, 'yellow', wordsPool));
   // black
-  cards = cards.concat(createCards(1, 'black'));
+  cards = cards.concat(createCards(1, 'black', wordsPool));
   // starting team extra card
   if (isBlueStartFirst) {
-    cards = cards.concat(createCards(1, 'blue'));
+    cards = cards.concat(createCards(1, 'blue', wordsPool));
   }else {
-    cards = cards.concat(createCards(1, 'red'));
+    cards = cards.concat(createCards(1, 'red', wordsPool));
   }
 
   // shuffle to make the order of colors random
@@ -122,12 +123,13 @@ function pickRandomCards(isBlueStartFirst) {
   return cards;
 }
 
-function createCards(number, color) {
+function createCards(number, color, wordsPool) {
   var cards = [];
-  var idx;
+
   for (var i = 0; i < number; i++) {
-    idx = Math.floor((Math.random() * words.length));
-    cards.push({word: words[idx], color: color});
+    var idx = Math.floor((Math.random() * wordsPool.length));
+    var chosenWord = wordsPool.splice(idx, 1)[0];
+    cards.push({word: chosenWord, color: color});
   }
   return cards;
 }
