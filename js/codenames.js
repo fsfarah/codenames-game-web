@@ -125,11 +125,22 @@ function pickRandomCards(isBlueStartFirst) {
 
 function createCards(number, color, wordsPool) {
   var cards = [];
+<<<<<<< HEAD
 
   for (var i = 0; i < number; i++) {
     var idx = Math.floor((Math.random() * wordsPool.length));
     var chosenWord = wordsPool.splice(idx, 1)[0];
     cards.push({word: chosenWord, color: color});
+=======
+  var idx;
+  var usedIdx = [];
+  for (var i = 0; i < number; i++) {
+    idx = Math.floor((Math.random() * words.length));
+    while (usedIdx.indexOf(idx) != -1) {
+      idx = Math.floor((Math.random() * words.length));
+    }
+    cards.push({word: words[idx], color: color});
+>>>>>>> b02a0d76c31c3ffc49359b3b04ba0d1192b1acd5
   }
   return cards;
 }
