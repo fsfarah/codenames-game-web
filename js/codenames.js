@@ -125,8 +125,12 @@ function pickRandomCards(isBlueStartFirst) {
 function createCards(number, color) {
   var cards = [];
   var idx;
+  var usedIdx = [];
   for (var i = 0; i < number; i++) {
     idx = Math.floor((Math.random() * words.length));
+    while (usedIdx.indexOf(idx) != -1) {
+      idx = Math.floor((Math.random() * words.length));
+    }
     cards.push({word: words[idx], color: color});
   }
   return cards;
